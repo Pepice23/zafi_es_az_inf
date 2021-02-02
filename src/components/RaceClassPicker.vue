@@ -66,6 +66,7 @@
 
 <script>
 import { alliance, horde } from "@/helpers/lists";
+import { types as mutationTypes } from "@/store/mutations";
 
 export default {
   name: "RaceClassPicker",
@@ -95,11 +96,15 @@ export default {
         this.currentlySelectedClass !== "";
     },
     onCharacterFinalize() {
-      this.$emit("factionRaceClass", {
-        faction: this.currentlySelectedFaction,
-        race: this.currentlySelectedRaceName,
-        kClass: this.currentlySelectedClass
-      });
+      this.$store.commit(
+        mutationTypes.SET_FACTION,
+        this.currentlySelectedFaction
+      );
+      this.$store.commit(
+        mutationTypes.SET_RACE,
+        this.currentlySelectedRaceName
+      );
+      this.$store.commit(mutationTypes.SET_CLASS, this.currentlySelectedClass);
     }
   }
 };
