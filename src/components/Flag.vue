@@ -1,0 +1,30 @@
+<template>
+  <div class="row text-center mt-1">
+    <div class="col">
+      <img src="../assets/alliance-logo.png" alt="alliance" class="flag" />
+    </div>
+    <div class="col">
+      <img src="../assets/wow-logo.jpg" alt="wow" class="logo" />
+    </div>
+    <div class="col">
+      <img src="../assets/horde-logo.png" alt="horde" class="flag" />
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: "Flag"
+};
+</script>
+
+<style scoped>
+.flag {
+  width: 200px;
+  height: 200px;
+}
+.logo {
+  width: 400px;
+  height: 200px;
+}
+</style>
