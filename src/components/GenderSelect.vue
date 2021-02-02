@@ -20,6 +20,8 @@
 </template>
 
 <script>
+import { types as mutationTypes } from "@/store/mutations";
+
 export default {
   name: "GenderSelect",
   data() {
@@ -30,13 +32,13 @@ export default {
       this.selectedGender = "Male";
       this.isSelectedM = true;
       this.isSelectedF = false;
-      this.$emit("genderSelected", this.selectedGender);
+      this.$store.commit(mutationTypes.SET_GENDER, this.selectedGender);
     },
     onFemaleSelect() {
       this.selectedGender = "Female";
       this.isSelectedM = false;
       this.isSelectedF = true;
-      this.$emit("genderSelected", this.selectedGender);
+      this.$store.commit(mutationTypes.SET_GENDER, this.selectedGender);
     }
   }
 };
