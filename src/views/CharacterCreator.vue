@@ -1,10 +1,8 @@
 <template>
   <div>
-    <NameInput @validCharacterName="getKarakterNev" />
-    <GenderSelect @genderSelected="getKarakterGender" />
-    <RaceClassPicker @factionRaceClass="getKarakterFRC" />
-
-    {{ karakterNev }} - {{ karakterGender }}
+    <NameInput />
+    <GenderSelect />
+    <RaceClassPicker />
   </div>
 </template>
 
@@ -17,19 +15,9 @@ export default {
   name: "CharacterCreator",
   components: { RaceClassPicker, NameInput, GenderSelect },
   data() {
-    return { karakterNev: "", karakterGender: "", karakterFRC: {} };
+    return {};
   },
-  methods: {
-    getKarakterNev(nev) {
-      this.karakterNev = nev;
-    },
-    getKarakterGender(gender) {
-      this.karakterGender = gender;
-    },
-    getKarakterFRC(fRC) {
-      this.karakterFRC = fRC;
-    }
-  }
+  methods: {}
 };
 </script>
 
