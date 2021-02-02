@@ -9,12 +9,11 @@
 </template>
 
 <script>
-import { defineComponent } from "vue";
 import GenderSelect from "@/components/GenderSelect.vue";
 import NameInput from "@/components/NameInput.vue";
 import RaceClassPicker from "@/components/RaceClassPicker.vue";
 
-export default defineComponent({
+export default {
   name: "CharacterCreator",
   components: { RaceClassPicker, NameInput, GenderSelect },
   data() {
@@ -31,7 +30,7 @@ export default defineComponent({
       this.karakterFRC = fRC;
     }
   }
-});
+};
 </script>
 
 <style scoped></style>
