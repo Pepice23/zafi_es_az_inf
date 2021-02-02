@@ -1,0 +1,108 @@
+<template>
+  <div class="row">
+    <div class="col mb-2"></div>
+  </div>
+  <div class="row text-center">
+    <div class="col">
+      <div class="col mb-1" v-for="race in alliance" :key="race.name">
+        <button
+          @click="onRaceSelect(race)"
+          :class="[
+            'btn',
+            race.name === currentlySelectedRaceName
+              ? 'btn-success'
+              : 'btn-primary'
+          ]"
+        >
+          {{ race.name }}
+        </button>
+      </div>
+    </div>
+    <div class="col">
+      <div
+        class="col mb-1"
+        v-for="cls in currentlySelectedRaceAvailableClasses"
+        :key="cls"
+      >
+        <button
+          :class="[
+            'btn',
+            cls === currentlySelectedClass ? 'btn-success' : 'btn-primary'
+          ]"
+          @click="onClassSelect(cls)"
+        >
+          {{ cls }}
+        </button>
+      </div>
+    </div>
+    <div class="col">
+      <div class="col mb-1" v-for="race in horde" :key="race.name">
+        <button
+          @click="onRaceSelect(race)"
+          :class="[
+            'btn',
+            race.name === currentlySelectedRaceName
+              ? 'btn-success'
+              : 'btn-primary'
+          ]"
+        >
+          {{ race.name }}
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="row text-center">
+    <div class="col">
+      <button
+        class="btn btn-primary"
+        @click="onCharacterFinalize"
+        :disabled="!isCharacterValid"
+      >
+        Karakter Véglegesítése!
+      </button>
+    </div>
+  </div>
+</template>
+
+<script>
+import { alliance, horde } from "@/helpers/lists";
+
+export default {
+  name: "RaceClassPicker",
+  data() {
+    return {
+      alliance: alliance,
+      horde: horde,
+      currentlySelectedRaceName: "",
+      currentlySelectedRaceAvailableClasses: [],
+      currentlySelectedClass: "",
+      currentlySelectedFaction: "",
+      isCharacterValid: false
+    };
+  },
+  methods: {
+    onRaceSelect(race) {
+      this.currentlySelectedRaceName = race.name;
+      this.currentlySelectedRaceAvailableClasses = race.availableClasses;
+      this.currentlySelectedClass = "";
+      this.currentlySelectedFaction = race.faction;
+    },
+    onClassSelect(cls) {
+      this.currentlySelectedClass = cls;
+      this.isCharacterValid =
+        this.currentlySelectedFaction !== "" ||
+        this.currentlySelectedRaceName !== "" ||
+        this.currentlySelectedClass !== "";
+    },
+    onCharacterFinalize() {
+      this.$emit("factionRaceClass", {
+        faction: this.currentlySelectedFaction,
+        race: this.currentlySelectedRaceName,
+        kClass: this.currentlySelectedClass
+      });
+    }
+  }
+};
+</script>
+
+<style scoped></style>
