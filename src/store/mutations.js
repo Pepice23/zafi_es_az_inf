@@ -4,6 +4,7 @@ export const types = {
   SET_FACTION: "SET_FACTION",
   SET_RACE: "SET_RACE",
   SET_CLASS: "SET_CLASS",
+  SET_CHARACTER_CREST: "SET_CHARACTER_CREST",
   SET_EXISTING_CHARACTER_NAMES: "SET_EXISTING_CHARACTER_NAMES"
 };
 export default {
@@ -17,12 +18,15 @@ export default {
     state.ujKarakter.karakterGender = gender;
   },
   [types.SET_FACTION](state, faction) {
-    state.ujKarakter.karakterGender = faction;
+    state.ujKarakter.karakterFaction = faction;
   },
   [types.SET_RACE](state, race) {
-    state.ujKarakter.karakterGender = race;
+    state.ujKarakter.karakterRace = race;
   },
   [types.SET_CLASS](state, kClass) {
-    state.ujKarakter.karakterGender = kClass;
+    state.ujKarakter.karakterClass = kClass;
+  },
+  [types.SET_CHARACTER_CREST](state, pictureString) {
+    state.ujKarakter.karakterPicture = pictureString;
   }
 };
