@@ -10,7 +10,8 @@ export default createStore({
       karakterGender: "",
       karakterFaction: "",
       karakterRace: "",
-      karakterClass: ""
+      karakterClass: "",
+      karakterPicture: ""
     },
     meglevoKarakterNevek: []
   },
