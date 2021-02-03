@@ -1,13 +1,17 @@
 <template>
   <div class="row text-center mt-1">
     <div class="col">
-      <img src="../assets/alliance-logo.png" alt="alliance" class="flag" />
+      <img
+        src="../assets/logos/alliance-logo.png"
+        alt="alliance"
+        class="flag"
+      />
     </div>
     <div class="col">
-      <img src="../assets/wow-logo.jpg" alt="wow" class="logo" />
+      <img src="../assets/logos/wow-logo.jpg" alt="wow" class="logo" />
     </div>
     <div class="col">
-      <img src="../assets/horde-logo.png" alt="horde" class="flag" />
+      <img src="../assets/logos/horde-logo.png" alt="horde" class="flag" />
     </div>
   </div>
 </template>
