@@ -66,7 +66,7 @@
 
 <script>
 import { alliance, horde } from "@/helpers/lists";
-import { types as mutationTypes } from "@/store/mutations";
+import { types as actionTypes } from "@/store/actions";
 
 export default {
   name: "RaceClassPicker",
@@ -78,7 +78,8 @@ export default {
       currentlySelectedRaceAvailableClasses: [],
       currentlySelectedClass: "",
       currentlySelectedFaction: "",
-      isCharacterValid: false
+      isCharacterValid: false,
+      crestPictureString: ""
     };
   },
   methods: {
@@ -90,21 +91,20 @@ export default {
     },
     onClassSelect(cls) {
       this.currentlySelectedClass = cls;
+      this.crestPictureString =
+        "../assets/crests/" + this.currentlySelectedClass + ".png";
       this.isCharacterValid =
         this.currentlySelectedFaction !== "" ||
         this.currentlySelectedRaceName !== "" ||
         this.currentlySelectedClass !== "";
     },
     onCharacterFinalize() {
-      this.$store.commit(
-        mutationTypes.SET_FACTION,
-        this.currentlySelectedFaction
-      );
-      this.$store.commit(
-        mutationTypes.SET_RACE,
-        this.currentlySelectedRaceName
-      );
-      this.$store.commit(mutationTypes.SET_CLASS, this.currentlySelectedClass);
+      this.$store.dispatch(actionTypes.SET_NEW_CHARACTER, {
+        faction: this.currentlySelectedFaction,
+        race: this.currentlySelectedRaceName,
+        kClass: this.currentlySelectedClass,
+        crest: this.crestPictureString
+      });
     }
   }
 };
